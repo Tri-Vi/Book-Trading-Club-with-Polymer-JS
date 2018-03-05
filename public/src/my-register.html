@@ -1,0 +1,42 @@
+
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-register">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <h1>Register Form</h1>
+      <iron-form allow-redirect id="registerForm">
+        <form action="/auth/register" method="post">
+          <paper-input required label="Username" name="username"></paper-input>
+          <paper-input required label="Password" name="username" type="password"></paper-input>
+          <paper-button type="submit" id="registerButton" on-tap="_submit" raised>Register</paper-button>
+        </form>
+      </iron-form>
+    </div>
+  </template>
+
+  <script>
+    class MyRegister extends Polymer.Element {
+      static get is() { return 'my-register'; }
+
+      _submit(){
+        alert('button clicked');
+        this.$.registerForm.submit();
+      }
+    }
+
+    window.customElements.define(MyRegister.is, MyRegister);
+  </script>
+</dom-module>
